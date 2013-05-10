@@ -1,4 +1,6 @@
 VideoUploader::Application.routes.draw do
+  devise_for :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -55,4 +57,5 @@ VideoUploader::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  root to: "home#index" #had to add a root line for devise, we'll probably want this to be "uploads#index" after we add the uploads resource
 end
