@@ -1,5 +1,7 @@
 class UploadsController < ApplicationController
 
+  before_filter :find_posting
+  before_filter :find_upload, :only => [:show, :edit, :update, :destroy]
   #before_filter :find_upload, :only => [:show,:edit,:update,:destroy]
   # GET /uploads
   # GET /uploads.json
@@ -42,11 +44,11 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-    @upload = Upload.new(params[:upload])
+    @upload = @posting.uploads.build(params[:upload])
 
     respond_to do |format|
       if @upload.save
-        format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
+        format.html { redirect_to [@posting, @upload], notice: 'Upload was successfully created.' }
       else
         flash[:alert] = "Upload has not been created."
         format.html { render action: "new"}
@@ -86,7 +88,7 @@ class UploadsController < ApplicationController
   private
 
   def find_upload
-    @upload = Upload.find(params[:id])
+    @upload = @posting.tickets.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The upload you were looking for could not be found."
     redirect_to uploads_path

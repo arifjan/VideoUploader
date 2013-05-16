@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516024308) do
+ActiveRecord::Schema.define(:version => 20130516042609) do
+
+  create_table "postings", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "uploads", :force => true do |t|
     t.string   "name"
@@ -19,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130516024308) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "file_name"
+    t.integer  "posting_id"
   end
 
 end

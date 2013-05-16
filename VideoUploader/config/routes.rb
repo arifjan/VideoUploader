@@ -1,4 +1,7 @@
 VideoUploader::Application.routes.draw do
+  resources :postings
+
+
   resources :uploads
   root :to => 'uploads#index'
 
