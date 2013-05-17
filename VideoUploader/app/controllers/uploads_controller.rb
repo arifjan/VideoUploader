@@ -2,7 +2,8 @@ class UploadsController < ApplicationController
 
   before_filter :find_posting
   before_filter :find_upload, :only => [:show, :edit, :update, :destroy]
-  #before_filter :find_upload, :only => [:show,:edit,:update,:destroy]
+
+
   # GET /uploads
   # GET /uploads.json
   def index
@@ -28,7 +29,7 @@ class UploadsController < ApplicationController
   # GET /uploads/new
   # GET /uploads/new.json
   def new
-    @upload = Upload.new
+    @upload = @posting.uploads.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -87,10 +88,18 @@ class UploadsController < ApplicationController
 
   private
 
+  def find_posting
+    @posting = Posting.find(params[:posting_id])
+
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The posting you were looking for could not be found."
+    redirect_to postings_path
+  end
+
   def find_upload
-    @upload = @posting.tickets.find(params[:id])
+    @upload = @posting.uploads.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The upload you were looking for could not be found."
-    redirect_to uploads_path
+    redirect_to posting_uploads_path
   end
 end

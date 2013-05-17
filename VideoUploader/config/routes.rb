@@ -1,9 +1,9 @@
 VideoUploader::Application.routes.draw do
-  resources :postings
+  resources :postings do
+    resources :uploads
+  end
 
-
-  resources :uploads
-  root :to => 'uploads#index'
+  root :to => 'postings#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

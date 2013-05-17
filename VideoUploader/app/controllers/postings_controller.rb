@@ -1,6 +1,6 @@
 class PostingsController < ApplicationController
 
-  before_filter :find_posting
+  before_filter :find_posting, :only => [:show]
   # GET /postings
   # GET /postings.json
   def index
@@ -77,6 +77,8 @@ class PostingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
 
   def find_posting
     @posting = Posting.find(params[:id])
