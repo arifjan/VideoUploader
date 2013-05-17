@@ -8,7 +8,7 @@
     <th></th>
   </tr>
 
-<% @uploads.each do |upload| %>
+<% @posting.uploads.each do |upload| %>
   <tr>
     <td><%= link_to upload.name, upload %></td>
     <td><%= upload.description %></td>
@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New Upload', new_upload_path %>
+<%= link_to 'New Upload', new_posting_upload_path %>

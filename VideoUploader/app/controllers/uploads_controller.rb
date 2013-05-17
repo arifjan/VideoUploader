@@ -7,7 +7,7 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    @uploads = @posting.uploads
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +18,7 @@ class UploadsController < ApplicationController
   # GET /uploads/1
   # GET /uploads/1.json
   def show
-    @upload = Upload.find(params[:id])
+    @upload = @posting.uploads.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -61,7 +61,7 @@ class UploadsController < ApplicationController
   # PUT /uploads/1
   # PUT /uploads/1.json
   def update
-    @upload = Upload.find(params[:id])
+    @upload = @posting.uploads.find(params[:id])
 
     respond_to do |format|
       if @upload.update_attributes(params[:upload])
@@ -77,11 +77,11 @@ class UploadsController < ApplicationController
   # DELETE /uploads/1
   # DELETE /uploads/1.json
   def destroy
-    @upload = Upload.find(params[:id])
+    @upload = @posting.uploads.find(params[:id])
     @upload.destroy
 
     respond_to do |format|
-      format.html { redirect_to uploads_url, message: "Ho Ho" }
+      format.html { redirect_to posting_url, message: "Ho Ho" }
       format.json { head :no_content }
     end
   end
