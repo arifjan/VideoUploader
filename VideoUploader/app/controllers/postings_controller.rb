@@ -1,5 +1,6 @@
 class PostingsController < ApplicationController
 
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :find_posting, :only => [:show]
   # GET /postings
   # GET /postings.json
@@ -38,7 +39,7 @@ class PostingsController < ApplicationController
   # POST /postings.json
   def create
     @posting = Posting.new(params[:posting])
-
+    @posting.user = current_user
     respond_to do |format|
       if @posting.save
         format.html { redirect_to @posting, notice: 'Posting was successfully created.' }

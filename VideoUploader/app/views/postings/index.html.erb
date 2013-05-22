@@ -1,8 +1,9 @@
-<h1>Listing postings</h1>
+<h1>Postings</h1>
 
 <table>
   <tr>
     <th>Title</th>
+    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +12,7 @@
 <% @postings.each do |posting| %>
   <tr>
     <td><%= posting.title %></td>
+    <td><%= posting.user.email %></td>
     <td><%= link_to 'Show', posting %></td>
     <td><%= link_to 'Edit', edit_posting_path(posting) %></td>
     <td><%= link_to 'Destroy', posting, method: :delete, data: { confirm: 'Are you sure?' } %></td>

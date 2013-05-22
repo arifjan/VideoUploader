@@ -3,6 +3,9 @@
 <p>
   <b>Title:</b>
   <%= @posting.title %>
+  <br />
+  <b>User:</b>
+  <%= @posting.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_posting_path(@posting) %> |
