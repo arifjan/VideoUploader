@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @posting.title %>
+</p>
+
+<%= link_to 'Edit', edit_posting_path(@posting) %> |
+<%= link_to 'Back', postings_path %>
+<%= link_to 'New Upload', new_posting_upload_path(@posting)  %>
+<ul id='uploads'>
+  <% @posting.uploads.each do |upload| %>
+    <li>
+      <%= link_to upload.name, [@posting, upload]  %>
+    </li>
+  <% end %>
+</ul>

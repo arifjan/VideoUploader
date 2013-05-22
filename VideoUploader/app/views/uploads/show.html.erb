@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @upload.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @upload.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_posting_upload_path(@upload) %> |
+<%= link_to 'Back', posting_path(@posting) %>
+<%= link_to 'Delete Upload', [@posting,@upload], method: :delete, data: { confirm: 'Are you sure?' } %>
