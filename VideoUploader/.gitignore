@@ -16,3 +16,6 @@
 
 #ignore the DS Store
 .DS_Store
+
+#ignore uploads
+/public/uploads
