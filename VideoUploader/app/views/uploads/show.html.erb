@@ -1,14 +1,11 @@
 <!-- <p id="notice"><%= notice %></p>   -->
 
-<p>
-  <b>Name:</b>
-  <%= @upload.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @upload.description %>
-</p>
+<dl>
+  <dt>Name</dt>
+  <dd><%= @upload.name %></dd>
+  <dt>Description</dt>
+  <dd><%= @upload.description %></dd>
+</dl>
 
 
 <%= link_to 'Edit', edit_posting_upload_path(@upload) %> |

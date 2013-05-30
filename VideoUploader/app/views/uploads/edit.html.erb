@@ -2,6 +2,6 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @upload %> |
-<%= link_to 'Back', posting_uploads_path %>
-<%= link_to 'Delete Upload', @upload, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Show', [@posting, @upload] %> |
+<%= link_to 'Back', posting_path %>
+<%= link_to 'Delete Upload', [@posting, @upload], method: :delete, data: { confirm: 'Are you sure?' } %>
